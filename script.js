@@ -5,17 +5,16 @@ function getComputerChoice() {
   return choice < 333 ? "ROCK" : choice < 666 ? "PAPER" : "SCISSORS";
 }
 
-function getHumanChoice() {
+/* function getHumanChoice() {
   let choice = prompt(
     'Please enter your choice "Rock" or "Paper" or "Scissors"'
   );
   choice = choice.toUpperCase();
   return choice;
-}
+} */
 
-function playRound() {
+function playRound(humanChoice) {
   let computerChoice = getComputerChoice();
-  let humanChoice = getHumanChoice();
   if (humanChoice === computerChoice) {
     console.log(`Draw! ${humanChoice} and ${computerChoice}`);
   } else {
@@ -48,10 +47,19 @@ function playRound() {
   console.log(
     `Result is -----> You : ${humanScore} - Computer : ${computerScore}`
   );
-}
+  if (computerScore == 5) {
+    alert(
+      `Game over, you lost the game. The score is: You -> ${humanScore} , Computer -> ${computerScore}`
+    );
+    humanScore = computerScore = 0;
+    return;
+  }
 
-function playGame() {
-  for (let i = 0; i < 10; i++) {
-    playRound();
+  if (humanScore == 5) {
+    alert(
+      `Congratulations!, you won the game. The score is: You -> ${humanScore} , Computer -> ${computerScore}`
+    );
+    humanScore = computerScore = 0;
+    return;
   }
 }
